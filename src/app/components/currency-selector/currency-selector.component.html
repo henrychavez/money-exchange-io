@@ -1,0 +1,34 @@
+<div
+  mdcMenuSurfaceAnchor
+  #selectorAnchor
+>
+  <button
+    mdc-button
+    class="me-currency-selector-button"
+    [disabled]="disabled"
+    (click)="toggleMenu()"
+  >
+    <span
+      class="me-currency-flag currency-flag"
+      [ngClass]="selectedItem.flag"
+    ></span>
+    {{selectedItem.name}}
+    <mdc-icon
+      *ngIf="!disabled"
+      fontSet="material-icons-round"
+    >arrow_drop_down
+    </mdc-icon>
+  </button>
+  <mdc-menu
+    [open]="shouldOpen"
+    [anchorElement]="selectorAnchor"
+    (selected)="updateCurrency($event)"
+  >
+    <mdc-list>
+      <mdc-list-item
+        *ngFor="let currency of items"
+        [textContent]="currency.name"
+      ></mdc-list-item>
+    </mdc-list>
+  </mdc-menu>
+</div>

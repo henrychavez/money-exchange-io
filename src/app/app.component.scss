@@ -1,0 +1,97 @@
+@import "~@angular-mdc/theme/scss/typography/mixins";
+@import "~src/styles/variables";
+
+.me-logo {
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%;
+}
+
+.me-site-menu {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  justify-content: center;
+}
+
+.me-site-menu__item {
+  @include mdc-typography('button');
+  text-decoration: none;
+  color: transparentize($mdc-theme-on-primary, .35);
+  font-weight: 600;
+  padding: 8px 24px;
+  margin: 0 8px;
+  box-shadow: inset 0 0 0 $mdc-theme-surface;
+  transition: box-shadow linear 200ms;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:hover, &--active {
+    color: $mdc-theme-on-primary;
+    box-shadow: inset 0 -4px 0 $mdc-theme-surface;
+  }
+}
+
+.me-content {
+  padding: 5rem 24px;
+}
+
+.me-converter {
+  padding: 24px;
+  background-color: $mdc-theme-surface;
+  border-radius: 8px;
+}
+
+.me-converter-form {
+  display: flex;
+  align-items: flex-end;
+}
+
+.me-converter-input {
+  display: flex;
+  flex: 1;
+  margin: 16px 0 0;
+}
+
+.me-converter-icon {
+  margin: 8px 24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: $mdc-theme-primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $mdc-theme-on-primary;
+}
+
+.me-converter-icon--down {
+  transform: rotate(90deg);
+}
+
+.me-converter-actions {
+  padding: 24px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.me-exchange-info {
+  margin: 0;
+  color: $mdc-theme-secondary;
+}
+
+.me-exchange-value {
+  margin: 0;
+  font-weight: 600;
+}
+
+.me-button {
+  padding: 0 24px;
+}

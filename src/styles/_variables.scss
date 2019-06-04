@@ -1,0 +1,9 @@
+$mdc-theme-primary: #0A0C20;
+$mdc-theme-secondary: #333A5A;
+$mdc-typography-font-family: unquote("Raleway, sans-serif");
+
+$mdc-typography-styles-headline5: (
+  font-weight: 500
+);
+
+@import "~@angular-mdc/theme/material";

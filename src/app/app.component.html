@@ -1,0 +1,132 @@
+<mdc-top-app-bar
+  [scrollTarget]="fixedContent"
+  prominent
+  style="position: unset"
+>
+  <mdc-top-app-bar-row>
+    <mdc-top-app-bar-section>
+      <h1
+        mdcHeadline5
+        class="me-logo"
+      >MoneyExchange.io</h1>
+    </mdc-top-app-bar-section>
+  </mdc-top-app-bar-row>
+  <mdc-top-app-bar-row>
+    <mdc-top-app-bar-section>
+      <div class="me-site-menu">
+        <a
+          href="#"
+          class="me-site-menu__item me-site-menu__item--active"
+        >Exchange
+        </a>
+        <a
+          href="#"
+          class="me-site-menu__item"
+        >Rates
+        </a>
+        <a
+          href="#"
+          class="me-site-menu__item"
+        >About
+        </a>
+        <a
+          href="#"
+          class="me-site-menu__item"
+        >Contact
+        </a>
+      </div>
+    </mdc-top-app-bar-section>
+  </mdc-top-app-bar-row>
+</mdc-top-app-bar>
+<div
+  #fixedContent
+  class="me-content"
+  fxLayout="row"
+  fxLayoutAlign="center center"
+>
+  <div
+    class="me-converter"
+    fxFlex="100%"
+    fxFlex.gt-xs="80%"
+    fxFlex.gt-md="60%"
+    [mdcElevation]="4"
+  >
+    <div
+      class="me-converter-form"
+      fxLayout="column"
+      fxLayout.gt-sm="row"
+    >
+      <div
+        fxFlex="100%"
+        fxFlexFill
+      >
+        <app-currency-selector
+          [items]="[currencyService.baseCurrency]"
+          [disabled]="true"
+        ></app-currency-selector>
+        <mdc-text-field
+          class="me-converter-input"
+          [label]="currencyService.baseCurrency.name"
+          [value]="amountToExchange | currency:currencyService.baseCurrency.name:'symbol':'1.2-4'"
+          (change)="updateAmount($event)"
+          (focusin)="clearAmountToExchange()"
+          outlined
+        ></mdc-text-field>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutAlign="center center"
+        fxFlex.xs="100%"
+        fxFlex.sm="100%"
+        fxFlexAlign="center"
+        fxFlexAlign.gt-sm="flex-end"
+      >
+        <div
+          class="me-converter-icon"
+          ngClass.lt-md="me-converter-icon--down"
+        >
+          <mdc-icon fontSet="material-icons-round">arrow_forward</mdc-icon>
+        </div>
+      </div>
+      <div
+        fxFlex="100%"
+        fxFlexFill
+      >
+        <app-currency-selector
+          [items]="currencyService.targetCurrencies"
+          (selected)="setTargetCurrency($event)"
+        ></app-currency-selector>
+        <mdc-text-field
+          class="me-converter-input"
+          [label]="targetCurrency?.name"
+          [value]="exchangedAmount | currency:targetCurrency?.name"
+          [readonly]="true"
+          outlined
+        ></mdc-text-field>
+      </div>
+    </div>
+    <div class="me-converter-actions">
+      <p
+        class="me-exchange-info"
+        mdcCaption
+      >
+        Exchange Rate<br>
+        <span
+          class="me-exchange-value"
+          mdcHeadline6
+          [textContent]="targetCurrency?.exchangeRate | currency:targetCurrency?.name"
+        ></span>
+      </p>
+      <button
+        class="me-button"
+        (click)="exchange()"
+        [disabled]="!amountToExchange"
+        mdc-button
+        primary
+      >
+        Exchange
+      </button>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

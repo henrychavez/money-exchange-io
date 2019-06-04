@@ -1,0 +1,11 @@
+@import "styles/variables";
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(180deg, $mdc-theme-primary 45%, $mdc-theme-secondary 100%);
+}
+
+.me-converter-input input {
+  font-weight: 600;
+}
