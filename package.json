@@ -24,7 +24,7 @@
     "@angular/router": "~7.2.0",
     "core-js": "^2.5.4",
     "currency-flags": "git+https://github.com/transferwise/currency-flags.git",
-    "i": "^0.3.6",
+    "i": "^0.3.7",
     "npm": "^6.9.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
